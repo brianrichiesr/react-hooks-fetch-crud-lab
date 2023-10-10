@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 
-function QuestionForm(props) {
-  const [formData, setFormData] = useState({
+function QuestionForm({ addQuestion}) {
+  const resetForm = {
     prompt: "",
     answer1: "",
     answer2: "",
     answer3: "",
     answer4: "",
     correctIndex: 0,
-  });
+  }
+  const [formData, setFormData] = useState(resetForm);
 
   function handleChange(event) {
     setFormData({
@@ -19,7 +20,9 @@ function QuestionForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formData);
+    addQuestion(formData);
+    setFormData(resetForm);
+    return alert("Question Successfully Added");
   }
 
   return (
